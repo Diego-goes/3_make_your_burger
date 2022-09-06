@@ -28,25 +28,7 @@
                         {{status_atual.tipo}}
                     </option>
                 </select>
-                <button class="delete-btn">Cancelar</button>
-            </div>
-        </div>
-        <div class="burger-table-row">
-            <div class="order-number">2</div>
-            <div>Maria</div>
-            <div>Italiano</div>
-            <div>Picanha</div>
-            <div>
-                <ul>
-                    <li>Queijo</li>
-                    <li>Cebola</li>
-                </ul>
-            </div>
-            <div>
-                <select name="status" class="status">
-                    <option value="">Selecione</option>
-                </select>
-                <button class="delete-btn">Cancelar</button>
+                <button class="delete-btn" @click="deleteBurger(burger.id)" >Cancelar</button>
             </div>
         </div>
     </div>
@@ -75,6 +57,13 @@ export default {
             const req = await fetch('http://localhost:3000/status')
             const data = await req.json()
             this.status = data
+        },
+        async deleteBurger(id){
+            const req = await fetch(`http://localhost:3000/burgers/${id}`,{
+            method: "DELETE"})
+            const data = await req.json()
+            // msg
+            this.getPedidos()
         }
     },
     mounted(){
