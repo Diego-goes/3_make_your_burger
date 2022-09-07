@@ -79,52 +79,12 @@
   ],
   "burgers": [
     {
-      "nome": "De",
-      "carne": "Picanha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame",
-        "Cebola roxa"
-      ],
+      "nome": "asd",
+      "carne": "Maminha",
+      "pao": "3 Queijos",
+      "opcionais": [],
       "status": "Em produção",
-      "id": 1
-    },
-    {
-      "nome": "Diego",
-      "carne": "Veggie burger",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Tomate",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado",
       "id": 2
-    },
-    {
-      "nome": "Diego",
-      "carne": "Alcatra",
-      "pao": "Parmesão e Orégano",
-      "opcionais": [
-        "Bacon",
-        "Tomate",
-        "Cebola roxa"
-      ],
-      "status": "Em produção",
-      "id": 5
-    },
-    {
-      "nome": "Diego",
-      "carne": "Alcatra",
-      "pao": "Parmesão e Orégano",
-      "opcionais": [
-        "Cheddar",
-        "Tomate",
-        "Pepino"
-      ],
-      "status": "Finalizado",
-      "id": 6
     }
   ]
 }

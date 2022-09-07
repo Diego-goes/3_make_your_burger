@@ -1,5 +1,6 @@
 <template>
   <div id="burger-table">
+    <Message :msg="msg" v-show="msg" />
     <div>
       <div id="burger-table-heading">
         <div class="order-id">#:</div>
@@ -24,7 +25,11 @@
           </ul>
         </div>
         <div>
-          <select name="status" class="status" @change="updateBurger($event,burger.id)">
+          <select
+            name="status"
+            class="status"
+            @change="updateBurger($event, burger.id)"
+          >
             <option value="">Selecione</option>
             <option
               v-for="status_atual in status"
@@ -45,6 +50,7 @@
 </template>
 
 <script>
+import Message from "./Message.vue";
 export default {
   name: "Dashboard",
   data() {
@@ -52,7 +58,11 @@ export default {
       burgers: null,
       burger_id: null,
       status: [],
+      msg: null,
     };
+  },
+  components: {
+    Message,
   },
   methods: {
     async getPedidos() {
@@ -72,18 +82,31 @@ export default {
         method: "DELETE",
       });
       const data = await req.json();
-      // msg
+
+      // Colocar uma msg de sistema
+      this.msg = `Pedido removido com sucesso`;
+      // Limpar msg
+      setTimeout(() => {
+        this.msg = "";
+      }, 3000);
+
       this.getPedidos();
     },
     async updateBurger(event, id) {
       const option = event.target.value;
-      const dataJson = JSON.stringify({status: option})
-      const req = await fetch(`http://localhost:3000/burgers/${id}`,{
-        method:"PATCH",
-        headers: { "Content-type": "application/json"},
-        body: dataJson
-      })
-      const res = await req.json()
+      const dataJson = JSON.stringify({ status: option });
+      const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+        method: "PATCH",
+        headers: { "Content-type": "application/json" },
+        body: dataJson,
+      });
+      const res = await req.json();
+      // Colocar uma msg de sistema
+      this.msg = `Pedido nº ${res.id} foi atualizado para '${res.status}'`;
+      // Limpar msg
+      setTimeout(() => {
+        this.msg = "";
+      }, 3000);
     },
   },
   mounted() {
